@@ -1,0 +1,74 @@
+﻿@model RecomSinqia.Models.Recomendacao
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Recomendacao</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Classificacao.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Classificacao.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Colaborador.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Colaborador.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dificuldade.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dificuldade.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gerencia.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gerencia.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoFalha.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoFalha.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prioridade.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prioridade.Nome)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
