@@ -14,13 +14,6 @@ namespace RecomSinqia.Models
 			set { _id = value; }
 		}
 
-		private string _observacao;
-		public virtual string Observacao
-		{
-			get { return _observacao; }
-			set { _observacao = value; }
-		}
-
 		private Gerencia _gerencia;
 		public virtual Gerencia Gerencia
 		{
@@ -30,7 +23,34 @@ namespace RecomSinqia.Models
 
 		public int GerenciaId { get; set; }
 
-		private Classificacao _classificacao;
+        private Cliente _cliente;
+        public virtual Cliente Cliente
+        {
+            get { return _cliente; }
+            set { _cliente = value; }
+        }
+
+        public int ClienteId { get; set; }
+
+        private Sistema _sistema;
+        public virtual Sistema Sistema
+        {
+            get { return _sistema; }
+            set { _sistema = value; }
+        }
+
+        public int SistemaId { get; set; }
+
+        private Modulo _modulo;
+        public virtual Modulo Modulo
+        {
+            get { return _modulo; }
+            set { _modulo = value; }
+        }
+
+        public int ModuloId { get; set; }
+
+        private Classificacao _classificacao;
 		public virtual Classificacao Classificacao
 		{
 			get { return _classificacao; }
@@ -48,25 +68,25 @@ namespace RecomSinqia.Models
 
 		public int TipoFalhaId { get; set; }
 
-		private Dificuldade _dificuldade;
+        private Prioridade _prioridade;
+        public virtual Prioridade Prioridade
+        {
+            get { return _prioridade; }
+            set { _prioridade = value; }
+        }
+
+        public int PrioridadeId { get; set; }
+
+        private Dificuldade _dificuldade;
 		public virtual Dificuldade Dificuldade
 		{
 			get { return _dificuldade; }
 			set { _dificuldade = value; }
 		}
 
-		public int DificuldadeId { get; set; }
+		public int DificuldadeId { get; set; }		      
 
-		private Prioridade _prioridade;
-		public virtual Prioridade Prioridade
-		{
-			get { return _prioridade; }
-			set { _prioridade = value; }
-		}
-
-		public int PrioridadeId { get; set; }
-
-		private Colaborador _colaborador;
+        private Colaborador _colaborador;
 		public virtual Colaborador Colaborador
 		{
 			get { return _colaborador; }
@@ -75,5 +95,12 @@ namespace RecomSinqia.Models
 
 		public int ColaboradorId { get; set; }
 
-	}
+        private string _observacao;
+        public virtual string Observacao
+        {
+            get { return _observacao; }
+            set { _observacao = value; }
+        }
+
+    }
 }

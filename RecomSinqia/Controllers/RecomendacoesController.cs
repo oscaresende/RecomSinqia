@@ -18,7 +18,7 @@ namespace RecomSinqia.Controllers
         // GET: Recomendacoes
         public ActionResult Index()
         {
-            var recomendacoes = db.Recomendacao.Include(r => r.Classificacao).Include(r => r.Colaborador).Include(r => r.Dificuldade).Include(r => r.Gerencia).Include(r => r.TipoFalha).Include(r => r.Prioridade);
+            var recomendacoes = db.Recomendacao.Include(r => r.Classificacao).Include(r => r.Colaborador).Include(r => r.Dificuldade).Include(r => r.Gerencia).Include(r => r.Cliente).Include(r => r.Sistema).Include(r => r.TipoFalha).Include(r => r.Prioridade).Include(r => r.Modulo);
             return View(recomendacoes.ToList());
         }
 
@@ -41,12 +41,15 @@ namespace RecomSinqia.Controllers
         public ActionResult Create()
         {
             ViewBag.ClassificacaoId = new SelectList(db.Classificacao, "Id", "Nome");
-            ViewBag.ColaboradorId = new SelectList(new List<Colaborador>(), "Id", "Nome");
+            ViewBag.ColaboradorId = new SelectList(db.Colaborador, "Id", "Nome");
             ViewBag.DificuldadeId = new SelectList(db.Dificuldade, "Id", "Nome");
             ViewBag.GerenciaId = new SelectList(db.Gerencia, "Id", "Nome");
+            ViewBag.SistemaId = new SelectList(db.Sistema, "Id", "Nome");
+            ViewBag.ClienteId = new SelectList(db.Cliente, "Id", "Nome");
             ViewBag.TipoFalhaId = new SelectList(db.TipoFalha, "Id", "Nome");
 			ViewBag.PrioridadeId = new SelectList(db.Prioridade, "Id", "Nome");
-			return View();
+            ViewBag.ModuloId = new SelectList(db.Modulo, "Id", "Nome");
+            return View();
         }
 
 		// POST: Recomendacoes/Create
@@ -54,7 +57,7 @@ namespace RecomSinqia.Controllers
 		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
 		[HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Observacao,GerenciaId,ClassificacaoId,TipoFalhaId,DificuldadeId,PrioridadeId,ColaboradorId")] Recomendacao recomendacao)
+        public ActionResult Create([Bind(Include = "Id,GerenciaId,ClienteId,SistemaId,ModuloId,ClassificacaoId,TipoFalhaId,PrioridadeId,DificuldadeId,ColaboradorId,Observacao")] Recomendacao recomendacao)
         {
             if (ModelState.IsValid)
             {
@@ -67,9 +70,12 @@ namespace RecomSinqia.Controllers
             ViewBag.ColaboradorId = new SelectList(db.Colaborador, "Id", "Nome", recomendacao.ColaboradorId);
             ViewBag.DificuldadeId = new SelectList(db.Dificuldade, "Id", "Nome", recomendacao.DificuldadeId);
             ViewBag.GerenciaId = new SelectList(db.Gerencia, "Id", "Nome", recomendacao.GerenciaId);
+            ViewBag.SistemaId = new SelectList(db.Sistema, "Id", "Nome", recomendacao.SistemaId);
+            ViewBag.ClienteId = new SelectList(db.Cliente, "Id", "Nome", recomendacao.ClienteId);
             ViewBag.TipoFalhaId = new SelectList(db.TipoFalha, "Id", "Nome", recomendacao.TipoFalhaId);
 			ViewBag.PrioridadeId = new SelectList(db.Prioridade, "Id", "Nome", recomendacao.PrioridadeId);
-			return View(recomendacao);
+            ViewBag.ModuloId = new SelectList(db.Modulo, "Id", "Nome", recomendacao.ModuloId);
+            return View(recomendacao);
         }
 
         // GET: Recomendacoes/Edit/5
@@ -88,9 +94,12 @@ namespace RecomSinqia.Controllers
             ViewBag.ColaboradorId = new SelectList(db.Colaborador, "Id", "Nome", recomendacao.ColaboradorId);
             ViewBag.DificuldadeId = new SelectList(db.Dificuldade, "Id", "Nome", recomendacao.DificuldadeId);
             ViewBag.GerenciaId = new SelectList(db.Gerencia, "Id", "Nome", recomendacao.GerenciaId);
+            ViewBag.ClienteId = new SelectList(db.Cliente, "Id", "Nome", recomendacao.ClienteId);
+            ViewBag.SistemaId = new SelectList(db.Sistema, "Id", "Nome", recomendacao.SistemaId);
             ViewBag.TipoFalhaId = new SelectList(db.TipoFalha, "Id", "Nome", recomendacao.TipoFalhaId);
 			ViewBag.PrioridadeId = new SelectList(db.Prioridade, "Id", "Nome", recomendacao.PrioridadeId);
-			return View(recomendacao);
+            ViewBag.ModuloId = new SelectList(db.Modulo, "Id", "Nome", recomendacao.ModuloId);
+            return View(recomendacao);
         }
 
         // POST: Recomendacoes/Edit/5
@@ -98,7 +107,7 @@ namespace RecomSinqia.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Observacao,GerenciaId,ClassificacaoId,TipoFalhaId,DificuldadeId,PrioridadeId,ColaboradorId")] Recomendacao recomendacao)
+        public ActionResult Edit([Bind(Include = "Id,GerenciaId,ClienteId,SistemaId,ModuloId,ClassificacaoId,TipoFalhaId,PrioridadeId,DificuldadeId,ColaboradorId,Observacao")] Recomendacao recomendacao)
         {
             if (ModelState.IsValid)
             {
@@ -110,9 +119,12 @@ namespace RecomSinqia.Controllers
             ViewBag.ColaboradorId = new SelectList(db.Colaborador, "Id", "Nome", recomendacao.ColaboradorId);
             ViewBag.DificuldadeId = new SelectList(db.Dificuldade, "Id", "Nome", recomendacao.DificuldadeId);
             ViewBag.GerenciaId = new SelectList(db.Gerencia, "Id", "Nome", recomendacao.GerenciaId);
+            ViewBag.ClienteId = new SelectList(db.Cliente, "Id", "Nome", recomendacao.ClienteId);
+            ViewBag.SistemaId = new SelectList(db.Sistema, "Id", "Nome", recomendacao.SistemaId);
             ViewBag.TipoFalhaId = new SelectList(db.TipoFalha, "Id", "Nome", recomendacao.TipoFalhaId);
 			ViewBag.PrioridadeId = new SelectList(db.Prioridade, "Id", "Nome", recomendacao.PrioridadeId);
-			return View(recomendacao);
+            ViewBag.ModuloId = new SelectList(db.Modulo, "Id", "Nome", recomendacao.ModuloId);
+            return View(recomendacao);
         }
 
         // GET: Recomendacoes/Delete/5

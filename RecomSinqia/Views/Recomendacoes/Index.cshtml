@@ -12,25 +12,34 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Classificacao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Colaborador)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Dificuldade)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Gerencia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sistema)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Modulo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Classificacao)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.TipoFalha)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Observacao)
+            @Html.DisplayNameFor(model => model.Prioridade)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Prioridade)
+            @Html.DisplayNameFor(model => model.Dificuldade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Colaborador)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Observacao)
         </th>
         <th></th>
     </tr>
@@ -38,25 +47,34 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Classificacao.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Colaborador.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Dificuldade.Nome)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Gerencia.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cliente.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sistema.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Modulo.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Classificacao.Nome)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.TipoFalha.Nome)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Observacao)
+            @Html.DisplayFor(modelItem => item.Prioridade.Nome)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Prioridade.Nome)
+            @Html.DisplayFor(modelItem => item.Dificuldade.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Colaborador.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Observacao)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
